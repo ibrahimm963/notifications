@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:ibrahimsite/Pages/Bewertungen/Bewertungen.dart';
-import 'package:ibrahimsite/Pages/HomePage/HomePage.dart';
-import 'package:ibrahimsite/Pages/Kontakt/Kontakt.dart';
-import 'package:ibrahimsite/Pages/Leistungen/Leistungen.dart';
-import 'package:ibrahimsite/Pages/Mission/Mission.dart';
-import 'package:ibrahimsite/Pages/Team/Team.dart';
+import 'Pages/Bewertungen/Bewertungen.dart';
+import 'Pages/HomePage/HomePage.dart';
+import 'Pages/Kontakt/Kontakt.dart';
+import 'Pages/Leistungen/Leistungen.dart';
+import 'Pages/Mission/Mission.dart';
+import 'Pages/Team/Team.dart';
 
 class PageCollection extends StatelessWidget {
   const PageCollection({super.key});
