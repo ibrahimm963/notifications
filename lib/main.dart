@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '/PageCollection.dart';
-import '/Pages/HomePage/HomePage.dart';
+import 'PageCollection.dart';
+import 'Pages/HomePage/HomePage.dart';
 void main() {
   runApp(const WebseitenVorlageIbo());
 }
