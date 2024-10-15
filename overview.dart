@@ -96,6 +96,7 @@ class _OverviewState extends State<Overview> {
                     ],
                   ),
                 ),
+                Container(height: 1.5, color: Colors.black,),
                 projects.isEmpty
                     ? Center(child: Text('No projects available'))
                     : ListView.builder(
@@ -103,7 +104,11 @@ class _OverviewState extends State<Overview> {
                         shrinkWrap: true,
                         itemCount: projects.length,
                         itemBuilder: (context, index) {
+                          bool isEven = index % 2 == 0;
                           return GestureDetector(
+                            onHorizontalDragCancel: () {
+                              print("dfdfdfdf");
+                            },
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -117,66 +122,228 @@ class _OverviewState extends State<Overview> {
                                 ),
                               );
                             },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Stack(
-                                      children: <Widget>[
-                                        Container( height: 115,
-                                          child: Placeholder()
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(width: 1.5, color: Colors.black),
+                                  left: BorderSide(width: 1.5, color: Colors.black),
+                                  right: BorderSide(width: 1.5, color: Colors.black),
+                                )
+                                ),
+                              child: Column(
+                                children: isEven
+                                              ? [
+                                                // Wenn der Index gerade ist, zeige Text rechts und Bild links
+                                                Stack(children: <Widget>[
+                                Container(
+                                  height: 136,
+                                  child: Stack(
+                                    children: [
+                                      ClipRRect(
+                                          child: Image.network("https://media.istockphoto.com/id/2167355078/de/foto/sonnenkollektoren-kraftwerk-feld-bauernhof-luftaufnahme.jpg?s=1024x1024&w=is&k=20&c=j5lcIonXp3-t7GW3tFSWazSUrR3pKqUcOAicnEn_0rk=",
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                        ClipPath(
-                                          clipper: TrapeziumClipper(),
-                                          child: Container(
-                                            color: Colors.white,
-                                            padding: EdgeInsets.all(8.0),
-                                            child: SizedBox(
-                                              height: 100,
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0,),
-                                                child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                                                                  children: [
-                                                                                    Padding(
-                                                                                      padding: const EdgeInsets.only(right: 40.0),
-                                                                                      child: Text(
-                                                                                        projects[index]['name'] ?? 'Unknown',
-                                                                                        style: const TextStyle(
-                                                                                          color: Colors.black,
-                                                                                          fontSize: 20,
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Spacer(),
-                                                                                    Padding(
-                                                                                      padding: const EdgeInsets.only(right: 40.0),
-                                                                                      child: Text(
-                                                                                        projects[index]['projectLeader'] ?? 'No Project Leader',
-                                                                                        style: const TextStyle(
-                                                                                          color: Colors.black87,
-                                                                                          fontSize: 16,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                    Padding(
-                                                                                      padding: const EdgeInsets.only(right: 40.0),
-                                                                                      child: Text(
-                                                                                        projects[index]['adress'] ?? 'No Address',
-                                                                                        style: const TextStyle(
-                                                                                          color: Colors.black54,
-                                                                                          fontSize: 16,
-                                                                                        ),
-                                                                                      ),
-                                                                                    ),
-                                                                                  ],
-                                                                                ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 105.0, left: 120.0),
+                                          child: Container( width: 80, height: 23,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFE3E3E3),
+                                              borderRadius: BorderRadius.all(Radius.circular(8.0))
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(2.0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                Icon(Icons.location_on, size: 18, color: Color(0xFF551A8B),),
+                                                Text("7 km",
+                                                style: TextStyle(
+                                                  color: Color(0xFF551A8B),
+                                                ),)
+                                              ],
                                               ),
                                             ),
-                                            width: double.infinity,
+                                            ),
+                                        ),
+                                    ],
+                                  )
+                                ),
+                                // Weißer Container mit ClipPath und Textinhalten
+                                ClipPath(
+                                  clipper: TrapeziumClipper(),
+                                  child: Container(
+                                    color: Colors.white,
+                                    padding: EdgeInsets.all(8.0),
+                                    width: double.infinity,
+                                    child: SizedBox(
+                                      height: 120,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0,),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(right: 8.0),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              // Projektname
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 140.0),
+                                                child: Text(
+                                                  projects[index]['name'] ?? 'Unknown',
+                                                  style: const TextStyle(
+                                                    color: Color(0xFFCDB38B),
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w200,
+                                                  ),
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              // Projektleiter
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 200.0),
+                                                child: Text(
+                                                  projects[index]['projectLeader'] ?? 'No Project Leader',
+                                                  style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                                ),
+                                              ),
+                                              // Adresse
+                                              Spacer(),
+                                              Padding(
+                                                padding: const EdgeInsets.only(left: 210.0),
+                                                child: Text(
+                                                  projects[index]['adress'] ?? 'No Address',
+                                                  style: const TextStyle(
+                                                    color: Color(0xFFAFAFAF),
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                        )
-                                      ],
+                                        ),
+                                      ),
                                     ),
+                                  ),
+                                ),
+                              ],
+                            )
+                                                ]
+                                              : [
+                                                  // Wenn der Index ungerade ist, zeige Text links und Bild rechts
+                                                  Stack(
+                              children: <Widget>[
+                                Positioned(
+                                  right: 0, // Bild nach rechts schieben
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        height: 136,
+                                        child: Stack(
+                                          children: [
+                                            ClipRRect(
+                                              child: Image.network("https://media.istockphoto.com/id/2167355078/de/foto/sonnenkollektoren-kraftwerk-feld-bauernhof-luftaufnahme.jpg?s=1024x1024&w=is&k=20&c=j5lcIonXp3-t7GW3tFSWazSUrR3pKqUcOAicnEn_0rk=",
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Padding(
+                                          padding: const EdgeInsets.only(top: 105.0, left: 110.0),
+                                          child: Container( width: 80, height: 23,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFE3E3E3),
+                                              borderRadius: BorderRadius.all(Radius.circular(8.0))
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(2.0),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                Icon(Icons.location_on, size: 18, color: Color(0xFF551A8B),),
+                                                Text("7 km",
+                                                style: TextStyle(
+                                                  color: Color(0xFF551A8B),
+                                                ),)
+                                              ],
+                                              ),
+                                            ),
+                                            ),
+                                        ),
+                                          ],
+                                        )
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                ClipPath(
+                                  clipper: TrapeziumClipper2(),
+                                  child: Container(
+                                    color: Colors.white,
+                                    padding: EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      height: 120,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0,),
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(left: 8.0),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(right: 140.0),
+                                                child: Text(
+                                                  projects[index]['name'] ?? 'Unknown',
+                                                  style: const TextStyle(
+                                                    color: Color(0xFFCDB38B),
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w200,
+                                                  ),
+                                                ),
+                                              ),
+                                              // Projektname
+                                              Spacer(),
+                                              Padding(
+                                                padding: const EdgeInsets.only(right: 200.0),
+                                                child: Text(
+                                                  projects[index]['projectLeader'] ?? 'No Project Leader',
+                                                  style: const TextStyle(
+                                                    color: Colors.black,
+                                                    fontSize: 14,
+                                                    fontStyle: FontStyle.italic,
+                                                  ),
+                                                ),
+                                              ),
+                                              //Projektleiter
+                                              Spacer(),
+                                              Padding(
+                                                padding: const EdgeInsets.only(right: 210.0),
+                                                child: Text(
+                                                  projects[index]['adress'] ?? 'No Address',
+                                                  style: const TextStyle(
+                                                    color: Color(0xFFAFAFAF),
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                              ),
+                                              // Adresse
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    width: double.infinity,
+                                  ),
+                                ),
+                                
+                              ],
+                            )
+                            
+                                                ],
+                              )
                             ),
                           );
                         },
@@ -197,7 +364,7 @@ class TrapeziumClipper extends CustomClipper<Path> {
     final path = Path();
     path.moveTo(size.width, 0.0);
     path.lineTo(size.width * 20 / 100, 0.0);
-    path.lineTo(size.width * 1 / 3, size.height);
+    path.lineTo(size.width * 1 / 2, size.height);
     path.lineTo(size.width, size.height);
 
     path.close();
@@ -212,10 +379,10 @@ class TrapeziumClipper2 extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.moveTo(size.width, 0.0);
-    path.lineTo(size.width * 70 / 90, 0.0);
-    path.lineTo(size.width * 1 / 1.6, size.height);
-    path.lineTo(size.width, size.height);
+    path.moveTo(0.0, 0.0); // Startpunkt links oben
+    path.lineTo(size.width * 4 / 5, 0.0); // Diagonale von rechts oben nach links unten
+    path.lineTo(size.width * 1 / 2, size.height);
+    path.lineTo(0.0, size.height); // Ende links unten
 
     path.close();
     return path;
