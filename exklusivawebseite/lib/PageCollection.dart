@@ -1,7 +1,7 @@
-import 'package:exklusivawebseite/Pages/ShopPage/Shop.dart';
+import 'Pages/ShopPage/Shop.dart';
 import 'package:flutter/material.dart';
-import 'package:exklusivawebseite/Pages/HomePage/HomePage.dart';
-import 'package:exklusivawebseite/Pages/Kontakt/Kontakt.dart';
+import 'Pages/HomePage/HomePage.dart';
+import 'Pages/Kontakt/Kontakt.dart';
 
 class PageCollection extends StatelessWidget {
   const PageCollection({super.key});
