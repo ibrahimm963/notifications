@@ -51,16 +51,6 @@ class HomePage extends StatelessWidget {
                         style: TextStyle(
                             color: Color.fromARGB(255, 99, 20, 20),
                             fontWeight: FontWeight.w600)),
-                    SizedBox(width: 18),
-                    Text("Notfall",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 99, 20, 20),
-                            fontWeight: FontWeight.w600)),
-                    SizedBox(width: 18),
-                    Text("Kontakt",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 99, 20, 20),
-                            fontWeight: FontWeight.w600)),
                   ],
                 ),
                 const Spacer(),
