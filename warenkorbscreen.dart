@@ -9,24 +9,7 @@ class WarenkorbScreen extends StatefulWidget {
 }
 
 class _WarenkorbScreenState extends State<WarenkorbScreen> {
-  List <Widget>[
-                            _WarenMenuItem("Dach1", "18 days", "7 days", 9499.99),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
-                            ),
-                            _WarenMenuItem("Dach2", "14 days", "3 days", 7999.99),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
-                            ),
-                            _WarenMenuItem("Dach3", "27 days", "5 days", 12499.99),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
-                            ),
-                            _WarenMenuItem("Dach4", "11 days", "2 days", 4999.99),
-                          ],
+  
   int itemcount = 4;
   int selitemcount = 1;
   int amountcount = 1;
@@ -154,79 +137,30 @@ class _WarenkorbScreenState extends State<WarenkorbScreen> {
                       ),
                     ),
                     Card(
-                      child: ListView.builder(
-                        itemBuilder: 
-                        )
+                      child: Column(
+                        children:[
+                            _WarenMenuItem("Dach1", "18 days", "7 days", 9499.99),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
+                            ),
+                            _WarenMenuItem("Dach2", "14 days", "3 days", 7999.99),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
+                            ),
+                            _WarenMenuItem("Dach3", "27 days", "5 days", 12499.99),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(width: 680, height: 0.5, color: Colors.grey,),
+                            ),
+                            _WarenMenuItem("Dach4", "11 days", "2 days", 4999.99),
+                          ],
+                      )
                       ),
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Text("Coupons"),
-                  TextField(),
-                  Text("segsdf"),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Text("sdadsfsdf"),
-                          Text("dfgsg"),
-                          Text("sdgdfgr"),
-                        ],
-                      ),
-                      Image.network("src")
-                    ],
-                  ),
-                  Text("Price Details"),
-                  Row(
-                    children: [
-                      Text("data"),
-                      Spacer(),
-                      Text("data"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text("data"),
-                      Spacer(),
-                      Text("data"),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text("data"),
-                      Spacer(),
-                      Text("data"),
-                    ],
-                  ),
-                  Container(height: 1, color: Colors.grey,),
-                  Row(
-                    children: [
-                      Text("data"),
-                      Spacer(),
-                      Text("data"),
-                    ],
-                  ),
-                  Container(
-                    width: 300, 
-                    height: 40, 
-                    color: Colors.black,
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Text("Place order",
-                          style: TextStyle(
-                            color: Colors.white
-                          ),
-                          ),
-                          Icon(Icons.arrow_right, color: Colors.white,)
-                        ],
-                      ),
-                    ),
-                    )
-                ],
-              )
             ],
           )
         ],
