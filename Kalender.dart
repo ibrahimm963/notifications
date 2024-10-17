@@ -204,141 +204,159 @@ void _fetchEvents() async {
           ),
                     if (announcements.isNotEmpty)
                       ...announcements.map((announcement) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0, left: 150.0,),
-                          child: Container(height: 100,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 204, 188, 220),
-                              border: Border.all(color: Color(0xFFAFAFAF)),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(5.0)
-                              )
+                        return Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: Container(width: 20, height: 1, color: Color(0xFFAFAFAF),),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(announcement['title'],
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF551A8B)
-                                  ),),
-                                  Row(
+                            Spacer(),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0, left: 150.0,),
+                              child: Container(height: 100,
+                                decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 204, 188, 220),
+                                  border: Border.all(color: Color(0xFFAFAFAF)),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(5.0)
+                                  )
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Color.fromARGB(255, 180, 146, 211),
-                                          border: Border.all(color: Color(0xFFAFAFAF)),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(5.0)
-                                          )
-                                        ),
-                                        width: 20, height: 20, 
-                                        child: Icon(Icons.announcement,
-                                        size: 17,
-                                        ),
-                                      ),
-                                      SizedBox(width: 10,),
-                                      Text(announcement['description'],
+                                      Text(announcement['title'],
                                       style: TextStyle(
-                                        fontSize: 14,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
                                         color: Color(0xFF551A8B)
                                       ),),
+                                      Row(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Color.fromARGB(255, 180, 146, 211),
+                                              border: Border.all(color: Color(0xFFAFAFAF)),
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(5.0)
+                                              )
+                                            ),
+                                            width: 20, height: 20, 
+                                            child: Icon(Icons.announcement,
+                                            size: 17,
+                                            ),
+                                          ),
+                                          SizedBox(width: 10,),
+                                          Text(announcement['description'],
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Color(0xFF551A8B)
+                                          ),),
+                                        ],
+                                      ),
+                                      Spacer(),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Icon(Icons.account_circle, size: 30,),
+                                          Icon(Icons.account_circle, size: 30,),
+                                          Icon(Icons.account_circle, size: 30,),
+                                          Icon(Icons.account_circle, size: 30,),
+                                          Icon(Icons.arrow_forward_ios, size: 15, color: Colors.grey,),
+                                        ],
+                                      )
                                     ],
                                   ),
-                                  Spacer(),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Icon(Icons.account_circle, size: 30,),
-                                      Icon(Icons.account_circle, size: 30,),
-                                      Icon(Icons.account_circle, size: 30,),
-                                      Icon(Icons.account_circle, size: 30,),
-                                      Icon(Icons.arrow_forward_ios, size: 15, color: Colors.grey,),
-                                    ],
-                                  )
-                                ],
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         );
                       }).toList(),
                     ...events.map((event) {
-                      return Padding(
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0, left: 150.0,),
-                      child: GestureDetector(
-                        child: Container(height: 100,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 232, 221, 206),
-                            border: Border.all(color: Color(0xFFAFAFAF)),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(5.0)
-                            )
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(event['text'],
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFFCDB38B)
-                                    ),),
-                                    Spacer(),
-                                    IconButton(
-                              onPressed: () {
-                                            setState(() {
-                                              _events[_selectedDay]?.remove(event); // Entferne die Aufgabe
-                                              _updateSelectedEvents(); // Aktualisiere die angezeigten Ereignisse
-                                            });
-                                            _deleteTaskFromAppwrite(event['documentId']);
-                                          },
-                              icon: Icon(Icons.close)
+                      return Row(
+                        children: [
+                          Padding(
+                              padding: const EdgeInsets.only(left: 18.0),
+                              child: Container(width: 20, height: 1, color: Color(0xFFAFAFAF),),
                             ),
-                                  ],
-                                ),
-                                Row(
+                          Spacer(),
+                          Padding(
+                          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 10.0, left: 150.0,),
+                          child: GestureDetector(
+                            child: Container(height: 100,
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 232, 221, 206),
+                                border: Border.all(color: Color(0xFFAFAFAF)),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.0)
+                                )
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color.fromARGB(255, 179, 161, 134),
-                                        border: Border.all(color: Color(0xFFAFAFAF)),
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(5.0)
-                                        )
-                                      ),
-                                      width: 20, height: 20, 
-                                      child: Icon(Icons.announcement,
-                                      size: 17,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(event['text'],
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xFFCDB38B)
+                                        ),),
+                                        Spacer(),
+                                        IconButton(
+                                  onPressed: () {
+                                                setState(() {
+                                                  _events[_selectedDay]?.remove(event); // Entferne die Aufgabe
+                                                  _updateSelectedEvents(); // Aktualisiere die angezeigten Ereignisse
+                                                });
+                                                _deleteTaskFromAppwrite(event['documentId']);
+                                              },
+                                  icon: Icon(Icons.close)
+                                ),
+                                      ],
                                     ),
-                                    SizedBox(width: 10,),
-                                    Text('Zeit: ${event['time']} | Priorität: ${event['priority']}',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Color(0xFFCDB38B)
-                                    ),),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Color.fromARGB(255, 179, 161, 134),
+                                            border: Border.all(color: Color(0xFFAFAFAF)),
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(5.0)
+                                            )
+                                          ),
+                                          width: 20, height: 20, 
+                                          child: Icon(Icons.announcement,
+                                          size: 17,
+                                          ),
+                                        ),
+                                        SizedBox(width: 10,),
+                                        Text('Zeit: ${event['time']} | Priorität: ${event['priority']}',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Color(0xFFCDB38B)
+                                        ),),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              ],
+                              ),
                             ),
+                            onTap: () {
+                                      _showTaskDialog(
+                                          existingTask: event['text'], // Vorhandenen Text
+                                          existingPriority: event['priority'], // Vorhandene Priorität
+                                          existingTime: event['time'], // Vorhandene Zeit
+                                        );
+                                      },
                           ),
-                        ),
-                        onTap: () {
-                                  _showTaskDialog(
-                                      existingTask: event['text'], // Vorhandenen Text
-                                      existingPriority: event['priority'], // Vorhandene Priorität
-                                      existingTime: event['time'], // Vorhandene Zeit
-                                    );
-                                  },
-                      ),
-                    );
+                                              ),
+                        ],
+                      );
                     }).toList(),
                   ],
                 );
