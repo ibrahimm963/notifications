@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:settingscreen/main.dart';
+import 'main.dart';
 
 class Support extends StatelessWidget {
   const Support({super.key});
