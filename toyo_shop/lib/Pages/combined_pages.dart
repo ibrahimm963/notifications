@@ -21,7 +21,7 @@ class CombinedPages extends StatelessWidget {
           SliverAppBar(
             leading: Text(""),
             toolbarHeight: 310,
-            backgroundColor: Color.fromARGB(255, 51, 51, 51),
+            backgroundColor: Colors.white,
             flexibleSpace: FooterPage(),
           ),
         ],
